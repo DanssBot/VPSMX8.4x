@@ -174,18 +174,6 @@ MEU_IP2=$(wget -qO- ipv4.icanhazip.com)
 echo "$MEU_IP" > /etc/VPS-MX/MEUIPvps
 fi
 }
-# USUARIO BLOCK
-blockfun () {
-local bot_retorno="$LINE\n"
-          bot_retorno+="--❌ USTED NO PUEDE USAR EL BOT ❌--\n"
-          bot_retorno+="$LINE\n"
-          bot_retorno+="_--Si eres ADMIN introduse tus credenciales--_\n"
-          bot_retorno+="$LINE\n"
-	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-							--text "$(echo -e $bot_retorno)" \
-							--parse_mode markdown
-	return 0
-}
 # SISTEMA DE LOGUIN
 ativarid_fun () {
 if [[ ! -z $LIBERADOS ]] && [[ $(echo ${LIBERADOS}|grep -w "$3") ]]; then
@@ -213,17 +201,7 @@ local bot_retorno+="$LINE\n"
 							--text "$(echo -e $bot_retorno)" \
 							--parse_mode markdown
 return 0
-else
-local bot_retorno+="$LINE\n"
-          bot_retorno+="--❌ ERROR DE CREDENCIALES ADMIN ❌--\n"
-          bot_retorno+="$LINE\n"
-          bot_retorno+="_Acesso de ADMIN Negado_\n"
-          bot_retorno+="_Usuario/Contraseña Erroneos_\n"
-          bot_retorno+="$LINE\n"
-	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-							--text "$(echo -e $bot_retorno)" \
-							--parse_mode markdown
-return 0
+
 fi
 }
 loguin_fun () {
